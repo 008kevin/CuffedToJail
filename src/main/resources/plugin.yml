@@ -1,0 +1,11 @@
+name: CuffedToJail
+version: '${project.version}'
+main: me.kardoskevin07.cuffedtojail.CuffedToJail
+api-version: '1.20'
+commands:
+  handcuff:
+    description: "Handcuff command"
+    usage: "/handcuff <player>"
+  carry:
+    description: "Carry command"
+    usage: "/carry <player>"
