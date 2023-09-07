@@ -1,12 +1,18 @@
 package me.kardoskevin07.cuffedtojail;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scoreboard.Score;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
 
 public final class PlayerStateManager {
 
@@ -14,6 +20,8 @@ public final class PlayerStateManager {
     private HashMap<Player, Player> ridingMap = new HashMap<>();
     private final PlayerStateManager instance;
     private final CuffedToJail main = CuffedToJail.getInstance();
+    private Scoreboard scoreboard = null;
+    private final String teamName = "Players";
 
     public PlayerStateManager() {
         instance = this;
@@ -50,12 +58,37 @@ public final class PlayerStateManager {
             if (ridingMap.containsKey(vehicle)) {
                 return;
             }
+
+
+            if (scoreboard == null) {
+                ScoreboardManager sbm = Bukkit.getScoreboardManager();
+                scoreboard = sbm.getNewScoreboard();
+                main.getLogger().info("scoreboard did not exist");
+            }
+            if (scoreboard.getTeam(teamName) == null) {
+                scoreboard.registerNewTeam(teamName);
+                main.getLogger().info("team did not exist");
+            }
+            Team team = scoreboard.getTeam(teamName);
+            team.setCanSeeFriendlyInvisibles(true);
+            for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                p.setScoreboard(scoreboard);
+                team.addEntry(p.getName());
+                main.getLogger().info(p.getName());
+            }
+
             vehicle.addPassenger(rider);
             ridingMap.put(vehicle,rider);
+
+            // TODO: packet based invisibility
+
+            rider.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 15));
+
         } else {
             if (ridingMap.get(vehicle).equals(rider)) {
                 ridingMap.remove(vehicle);
                 vehicle.removePassenger(rider);
+                rider.removePotionEffect(PotionEffectType.INVISIBILITY);
             }
         }
     }

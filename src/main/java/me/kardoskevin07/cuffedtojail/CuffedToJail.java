@@ -1,21 +1,38 @@
 package me.kardoskevin07.cuffedtojail;
 
+import com.earth2me.essentials.Essentials;
+import com.earth2me.essentials.Jails;
 import me.kardoskevin07.cuffedtojail.commands.HandCuffCommand;
 import me.kardoskevin07.cuffedtojail.commands.CarryCommand;
 import me.kardoskevin07.cuffedtojail.eventlisteners.EventListeners;
+import me.kardoskevin07.cuffedtojail.models.JailSign;
+import net.ess3.api.IJails;
+import net.ess3.api.IUser;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class CuffedToJail extends JavaPlugin {
+import java.io.File;
+import java.util.concurrent.CompletableFuture;
 
+public final class CuffedToJail extends JavaPlugin {
     private static CuffedToJail instance;
     private  static PlayerStateManager pms;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
+        ConfigurationSerialization.registerClass(JailSign.class, "JailSign");
+
         instance = this;
         pms = new PlayerStateManager();
         pms = pms.getInstance();
+
+        Essentials essentials = (Essentials) getServer().getPluginManager().getPlugin("Essentials");
+        IJails essJails = essentials.getJails();
+
+        JailSignManager.getInstance().createSignsConfig();
 
         this.getCommand("handcuff").setExecutor(new HandCuffCommand());
         this.getCommand("carry").setExecutor(new CarryCommand());
