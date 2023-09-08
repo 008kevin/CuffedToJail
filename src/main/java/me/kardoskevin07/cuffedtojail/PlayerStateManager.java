@@ -30,7 +30,7 @@ public final class PlayerStateManager {
     }
 
     public void setHandcuffed(Player player, Boolean state) {
-        if(state) {
+        if(Boolean.TRUE.equals(state)) {
             // if list doesn't contain name already
             if (handCuffedPlayerList.stream().noneMatch(o -> o.equals(player))) {
                 handCuffedPlayerList.add(player);
@@ -49,7 +49,7 @@ public final class PlayerStateManager {
 
 
     public void setRiding(Player vehicle, Player rider, Boolean state) {
-        if (state) {
+        if (Boolean.TRUE.equals(state)) {
             if (ridingMap.containsValue(rider)) {
                 return;
             }
