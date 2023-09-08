@@ -9,9 +9,6 @@ import net.ess3.api.IJails;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.util.concurrent.CompletableFuture;
-
 public final class CuffedToJail extends JavaPlugin {
     private static CuffedToJail instance;
     private  static PlayerStateManager pms;

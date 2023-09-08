@@ -18,8 +18,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerSignOpenEvent;
 import org.spigotmc.event.entity.EntityDismountEvent;
 
-import java.util.Objects;
-
 public class EventListeners implements Listener {
 
     private final CuffedToJail main = CuffedToJail.getInstance();

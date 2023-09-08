@@ -23,7 +23,7 @@ public final class JailSignManager {
     private JailSignManager() {
     }
 
-    public static JailSignManager getInstance() {
+    public static synchronized JailSignManager getInstance() {
         if(INSTANCE == null) {
             INSTANCE = new JailSignManager();
         }
