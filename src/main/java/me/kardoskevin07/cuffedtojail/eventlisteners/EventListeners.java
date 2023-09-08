@@ -1,15 +1,9 @@
 package me.kardoskevin07.cuffedtojail.eventlisteners;
 
-import com.earth2me.essentials.Essentials;
-import com.earth2me.essentials.IEssentials;
-import com.earth2me.essentials.Jails;
 import me.kardoskevin07.cuffedtojail.CuffedToJail;
 import me.kardoskevin07.cuffedtojail.JailSignManager;
 import me.kardoskevin07.cuffedtojail.PlayerStateManager;
-import net.ess3.api.IJails;
-import net.ess3.api.events.SignInteractEvent;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.type.Sign;
@@ -17,11 +11,9 @@ import org.bukkit.block.data.type.WallSign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerSignOpenEvent;
 import org.spigotmc.event.entity.EntityDismountEvent;

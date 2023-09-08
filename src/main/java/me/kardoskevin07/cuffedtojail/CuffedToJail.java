@@ -1,15 +1,11 @@
 package me.kardoskevin07.cuffedtojail;
 
 import com.earth2me.essentials.Essentials;
-import com.earth2me.essentials.Jails;
 import me.kardoskevin07.cuffedtojail.commands.HandCuffCommand;
 import me.kardoskevin07.cuffedtojail.commands.CarryCommand;
 import me.kardoskevin07.cuffedtojail.eventlisteners.EventListeners;
 import me.kardoskevin07.cuffedtojail.models.JailSign;
 import net.ess3.api.IJails;
-import net.ess3.api.IUser;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
 

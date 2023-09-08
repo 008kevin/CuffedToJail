@@ -2,16 +2,13 @@ package me.kardoskevin07.cuffedtojail;
 
 import me.kardoskevin07.cuffedtojail.models.JailSign;
 import org.bukkit.Location;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public final class JailSignManager {
 
